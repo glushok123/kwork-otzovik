@@ -1,0 +1,55 @@
+version: '3.7'
+services:
+  otzovik-ru-nginx:
+    image: otzovik-ru-nginx:${IMAGE_TAG}
+    container_name: otzovik-ru-app-nginx
+    ports:
+      - ${TEST_WEB_PORT}:80
+    volumes:
+      - .:/app
+    depends_on:
+      - otzovik-ru-php-fpm
+      - otzovik-ru-redis
+
+  otzovik-ru-redis:
+    image: redis:3.2.10-alpine
+    container_name: otzovik-ru-app-redis
+    ports:
+      - 63791:6379
+
+  otzovik-ru-mariadb:
+    image: mariadb:10.1.32
+    container_name: otzovik-ru-app-mariadb
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ${TEST_DB_PATH}:/var/lib/mysql
+      - ./docker/development/mariadb/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 33061:3306
+
+  otzovik-ru-php-fpm:
+    image: otzovik-ru-php-fpm:${IMAGE_TAG}
+    container_name: otzovik-ru-app-php-fpm
+    volumes:
+      - .:/app
+
+  otzovik-ru-php-cli:
+    image: otzovik-ru-php-cli:${IMAGE_TAG}
+    container_name: otzovik-ru-app-php-cli
+    volumes:
+      - .:/app
+
+  otzovik-ru-node-cli:
+    image: node
+    container_name: otzovik-ru-app-node-cli
+    volumes:
+      - .:/app
+    working_dir: /app
+
+networks:
+  default:
+    name: otzovik-ru-dev_default
