@@ -14,7 +14,15 @@ use App\Http\Controllers\PDFController;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\HomeController@show');
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+
+Route::group(['prefix'=>'review'], function(){
+    Route::get('/create-review/{id?}', 'App\Http\Controllers\ReviewController@create')->name('create-review');
+    Route::post('/create-new-review', 'App\Http\Controllers\ReviewController@createNewReview')->name('create-new-review');
+    Route::get('/create-new-review-message-success', 'App\Http\Controllers\ReviewController@createNewReviewMessageSuccess')->name('create-new-review-message-success');
+    Route::get('/show-reviews/{id}', 'App\Http\Controllers\ReviewController@showReviews')->name('show-reviews');
+});
+
 
 Route::group(["middleware" => ["web", "admin"]], function () {
     Route::group(['prefix'=>'orders'], function(){
