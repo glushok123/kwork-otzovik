@@ -7,7 +7,7 @@
 			<div class="wrapper">
 				<div class="container">
 					<h3>Каждый отзыв - это незабываемый опыт!</h3>
-					<p>Проверяйте рейтинги, читайте отзывы &amp; Яндекс.Директ</p>
+					<p>Проверяйте рейтинги, читайте отзывы</p>
 					<div class="row justify-content-center">
 						<div class="col-lg-9">
 						<form method="post" action="grid-listings-filterstop.html">
@@ -20,7 +20,7 @@
 								</div>
 								<div class="col-lg-3">
 									<select class="wide">
-										<option>Яндекс.Директ</option>	
+										<option>Директ</option>	
 									</select>
 								</div>
 								<div class="col-lg-2">

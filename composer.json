@@ -20,6 +20,7 @@
         "spatie/laravel-backup": "^8.1"
     },
     "require-dev": {
+        "backpack/generators": "^3.3",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
