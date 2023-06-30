@@ -70,6 +70,14 @@
 								<input type="email" class="form-control floating" id="sourceReview" name='sourceReview' value="">
 								<label for="usr">Источник</label>
 							</div>
+
+							<!-- добавление элемента div -->
+							<div class="g-recaptcha" data-sitekey="6Ld4tOImAAAAAFpFKaJyLBdCm8GPtG01SfS8pz0C"></div>
+							<!-- элемент для вывода ошибок -->
+							<div class="text-danger" id="recaptchaError"></div>
+							<!-- js-скрипт гугл капчи -->
+							<script src='https://www.google.com/recaptcha/api.js'></script>
+
 							<button class="btn_1" id="createButtonReview" type='button'>Отправить отзыв</button>
 						</div>
 					</form>
@@ -179,6 +187,23 @@
 		}
 
 		if (prov == false) {
+			return false;
+		}
+
+
+		var captcha = grecaptcha.getResponse();
+
+		// 2. Если ответ пустой, то выводим сообщение о том, что пользователь не прошёл тест.
+		// Такую форму не будем отправлять на сервер.
+		if (!captcha.length) {
+		// Выводим сообщение об ошибке
+			$('#recaptchaError').text('* Вы не прошли проверку "Я не робот"');
+		} else {
+		// получаем элемент, содержащий капчу
+			$('#recaptchaError').text('');
+		}
+
+		if (!captcha.length){
 			return false;
 		}
 
