@@ -10,11 +10,12 @@
 					<p>Проверяйте рейтинги, читайте отзывы</p>
 					<div class="row justify-content-center">
 						<div class="col-lg-9">
-						<form method="post" action="grid-listings-filterstop.html">
+						<div action="grid-listings-filterstop.html">
 							<div class="row no-gutters custom-search-input-2">
 								<div class="col-lg-7">
+
 									<div class="form-group">
-										<input class="form-control" type="text" placeholder="Что вы ищите...">
+										<input class="form-control" type="text" placeholder="Что вы ищите..." id="input-search">
 										<i class="icon_search"></i>
 									</div>
 								</div>
@@ -24,200 +25,49 @@
 									</select>
 								</div>
 								<div class="col-lg-2">
-									<input type="submit" value="Поиск">
+									<input type="submit" value="Поиск" id='button-search'>
 								</div>
 							</div>
 							<!-- /row -->
-						</form>
+						</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!-- /hero_single -->
-		
-		<div class="container margin_60_35">
-			<div class="main_title_3">
-					<h2>Top Categories</h2>
-					<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
-					<a href="all-categories.html">View all</a>
-				</div>
-			<div class="row justify-content-center">
-				<div class="col-lg-4 col-sm-6">
-					<a href="grid-listings-filterstop.html" class="grid_item">
-						<figure>
-							<img src="{{ asset('img/box_cat_home_1.jpg') }}" alt="">
-							<div class="info">
-								<small>122 Results</small>
-								<em><i class="icon-comment"></i> 356 Reviews</em>
-								<h3>Clothing</h3>
-							</div>
-						</figure>
-					</a>
-				</div>
-				<!-- /grid_item -->
-				<div class="col-lg-4 col-sm-6">
-					<a href="grid-listings-filterstop.html" class="grid_item">
-						<figure>
-							<img src="{{ asset('img/box_cat_home_2.jpg') }}" alt="">
-							<div class="info">
-								<small>245 Results</small>
-								<em><i class="icon-comment"></i> 123 Reviews</em>
-								<h3>Hotels</h3>
-							</div>
-						</figure>
-					</a>
-				</div>
-				<!-- /grid_item -->
-				<div class="col-lg-4 col-sm-6">
-					<a href="grid-listings-filterstop.html" class="grid_item">
-						<figure>
-							<img src="{{ asset('img/box_cat_home_3.jpg') }}" alt="">
-							<div class="info">
-								<small>95 Results</small>
-								<em><i class="icon-comment"></i> 245 Reviews</em>
-								<h3>Restaurants</h3>
-							</div>
-						</figure>
-					</a>
-				</div>
-				<!-- /grid_item -->
-				<div class="col-lg-4 col-sm-6">
-					<a href="grid-listings-filterstop.html" class="grid_item">
-						<figure>
-							<img src="{{ asset('img/box_cat_home_4.jpg') }}" alt="">
-							<div class="info">
-								<small>123 Results</small>
-								<em><i class="icon-comment"></i> 187 Reviews</em>
-								<h3>Bars</h3>
-							</div>
-						</figure>
-					</a>
-				</div>
-				<!-- /grid_item -->
-				<div class="col-lg-4 col-sm-6">
-					<a href="grid-listings-filterstop.html" class="grid_item">
-						<figure>
-							<img src="{{ asset('img/box_cat_home_5.jpg') }}" alt="">
-							<div class="info">
-								<small>92 Results</small>
-								<em><i class="icon-comment"></i> 221 Reviews</em>
-								<h3>Electronics</h3>
-							</div>
-						</figure>
-					</a>
-				</div>
-				<!-- /grid_item -->
-				<div class="col-lg-4 col-sm-6">
-					<a href="grid-listings-filterstop.html" class="grid_item">
-						<figure>
-							<img src="{{ asset('img/box_cat_home_6.jpg') }}" alt="">
-							<div class="info">
-								<small>92 Results</small>
-								<em><i class="icon-comment"></i> 323 Reviews</em>
-								<h3>Beauty</h3>
-							</div>
-						</figure>
-					</a>
-				</div>
-				<!-- /grid_item -->
-			</div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-		
+
 		<div class="bg_color_1">
 		<div class="container margin_60">
 			<div class="main_title_3">
 				<h2>Последние отзывы</h2>
-				<a href="reviews-page.html">View all</a>
+				<!--a href="reviews-page.html">View all</a-->
 			</div>
 			
 			<div id="reccomended" class="owl-carousel owl-theme">
-				<div class="item">
-					<div class="review_listing">
-						<div class="clearfix">
-							<figure><img src="{{ asset('img/avatar1.jpg') }}" alt=""></figure>
-							<span class="rating"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><em>4.50/5.00</em></span>
-							<small>Shops</small>
+				@foreach ($reviews as $review)
+					<div class="item">
+						<div class="review_listing">
+							<div class="clearfix">
+								<figure><img src="{{ asset('img/avatar1.jpg') }}" alt=""></figure>
+								<span class="rating">
+									<i class="icon_star @if ($review->rating < 1) empty @endif"></i>
+									<i class="icon_star @if ($review->rating < 2) empty @endif"></i>
+									<i class="icon_star @if ($review->rating < 3) empty @endif"></i>
+									<i class="icon_star @if ($review->rating < 4) empty @endif"></i>
+									<i class="icon_star @if ($review->rating < 5) empty @endif"></i>
+									<em>{{ $review->rating }}/5</em>
+								</span>
+							</div>
+							<h3><strong>{{ $review->name }}</strong> прокоментировал <a href="{{ route('show-reviews', ['id' => $review->site_id ]) }}">{{ $review->site->name}}</a></h3>
+							<hr>
+							<p>{{ $review->rewiew }}</p>
+							<ul class="clearfix">
+								<li><small>{{ $review->created_at }}</small></li>
+								<li><a href="{{ route('show-reviews', ['id' => $review->site_id ]) }}" class="btn_1 small">Читать отзывы</a></li>
+							</ul>
 						</div>
-						<h3><strong>Jhon Doe</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
-						<h4>"Avesome Experience"</h4>
-						<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
-						<ul class="clearfix">
-							<li><small>Published: 26.08.2018</small></li>
-							<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
-						</ul>
 					</div>
-				</div>
-				
-				<div class="item">
-					<div class="review_listing">
-						<div class="clearfix">
-							<figure><img src="{{ asset('img/avatar2.jpg') }}" alt=""></figure>
-							<span class="rating"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star empty"></i><i class="icon_star empty"></i><em>4.50/5.00</em></span>
-							<small>Shops</small>
-						</div>
-						<h3><strong>Marika</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
-						<h4>"Great products"</h4>
-						<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
-						<ul class="clearfix">
-							<li><small>Published: 26.08.2018</small></li>
-							<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
-						</ul>
-					</div>
-				</div>
-				
-				<div class="item">
-					<div class="review_listing">
-						<div class="clearfix">
-							<figure><img src="{{ asset('img/avatar3.jpg') }}" alt=""></figure>
-							<span class="rating"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star empty"></i><em>4.50/5.00</em></span>
-							<small>Shops</small>
-						</div>
-						<h3><strong>Lukas Lee</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
-						<h4>"Excellent Support"</h4>
-						<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
-						<ul class="clearfix">
-							<li><small>Published: 26.08.2018</small></li>
-							<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
-						</ul>
-					</div>
-				</div>
-				
-				<div class="item">
-					<div class="review_listing">
-						<div class="clearfix">
-							<figure><img src="{{ asset('img/avatar4.jpg') }}" alt=""></figure>
-							<span class="rating"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><em>4.50/5.00</em></span>
-							<small>Shops</small>
-						</div>
-						<h3><strong>Margaret</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
-						<h4>"Perfect"</h4>
-						<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
-						<ul class="clearfix">
-							<li><small>Published: 26.08.2018</small></li>
-							<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
-						</ul>
-					</div>
-				</div>
-				
-				<div class="item">
-					<div class="review_listing">
-						<div class="clearfix">
-							<figure><img src="{{ asset('img/avatar5.jpg') }}" alt=""></figure>
-							<span class="rating"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star empty"></i><em>4.50/5.00</em></span>
-							<small>Shops</small>
-						</div>
-						<h3><strong>Mark Twain</strong> reviewed <a href="reviews-page.html">Fnac</a></h3>
-						<h4>"Shipping Very Fast"</h4>
-						<p>Et nec tantas accusamus salutatus, sit commodo veritus te</p>
-						<ul class="clearfix">
-							<li><small>Published: 26.08.2018</small></li>
-							<li><a href="#0" class="btn_1 small">Read review</a></li>
-						</ul>
-					</div>
-				</div>
+				@endforeach
 
 			</div>
 			<!-- /carousel -->
@@ -251,6 +101,52 @@
 
 @section('after_scripts')
 
+<script>
+	function searchRequest() {
+
+
+
+		$.ajax({
+            url: '/review/create-new-review',
+            method: 'post',
+            data: {
+				seacrh : $('#input-search').val()
+			},
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
+            success: function (data) {
+				console.log(data);
+				if (data.success == 'true') {
+					location.href = '/review/create-new-review-message-success';
+				}else{
+					toastr.error(data.message);
+				}
+            },
+            error: function (jqXHR, exception) {
+                if (jqXHR.status === 0) {
+                    alert('Not connect. Verify Network.');
+                } else if (jqXHR.status == 404) {
+                    alert('Requested page not found (404).');
+                } else if (jqXHR.status == 500) {
+                    alert('Internal Server Error (500).');
+                } else if (exception === 'parsererror') {
+                    alert('Requested JSON parse failed.');
+                } else if (exception === 'timeout') {
+                    alert('Time out error.');
+                } else if (exception === 'abort') {
+                    alert('Ajax request aborted.');
+                } else {
+                    alert('Uncaught Error. ' + jqXHR.responseText);
+                }
+            }
+        });
+	}
+
+	$(document).on('click', '#button-search', function () {
+        searchRequest()
+    }); // Запрос на добавление новой картины
+</script>
 @endsection
 
 @section('description', '')

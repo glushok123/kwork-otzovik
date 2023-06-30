@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index(): View
     {
         return view('welcome', [
-            "reviews" => Review::orderBy('created_at', 'DESC')->limit(5)->get(),
+            "reviews" => Review::where('verify', 1)->orderBy('created_at', 'DESC')->limit(7)->get(),
         ]);
     }
 }

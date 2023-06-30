@@ -82,7 +82,7 @@
 					<div class="review_card">
 						<div class="row">
 							<div class="col-md-2 user_info">
-								<figure><img src="img/avatar1.jpg" alt=""></figure>
+								<figure><img src="{{ asset('img/avatar1.jpg') }}" alt=""></figure>
 								<h5>{{ $review->name }}</h5>
 							</div>
 							<div class="col-md-10 review_content">
@@ -142,6 +142,7 @@
 					<div class="box_general company_info">
 						<h3>{{ $site->name }}</h3>
 						<p><strong>Website</strong><br><a href="{{ $site->url }}">{{ $site->url }}</a></p>
+						<a href="{{ route('create-review', ['id' => $site->id]) }}" class="btn_top my-3">Добавить отзыв</a>
 					</div>
 				</div>
 			</div>

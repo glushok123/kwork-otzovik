@@ -64,48 +64,6 @@
 		<nav id="menu" class="main-menu">
 			<ul>
 				<li><span><a href="{{ route('home') }}">Главная</a></span></li>
-				<li><span><a href="#0">Отзывы</a></span>
-					<ul>
-						<li>
-							<span><a href="#0">Layouts</a></span>
-							<ul>
-								<li><a href="grid-listings-filterstop.html">Grid listings 1</a></li>
-								<li><a href="grid-listings-filterscol.html">Grid listings 2</a></li>
-								<li><a href="row-listings-filterscol.html">Row listings</a></li>
-							</ul>
-						</li>
-						<li><a href="reviews-page.html">Reviews page</a></li>
-						<li><a href="write-review.html">Write a review</a></li>
-						<li><a href="confirm.html">Confirm page</a></li>
-						<li><a href="user-dashboard.html">User Dashboard</a></li>
-						<li><a href="user-settings.html">User Settings</a></li>
-					</ul>
-				</li>
-
-				<li><span><a href="#0">Pages</a></span>
-					<ul>
-						<li><a href="companies-landing.html">Compannies Landing Page</a></li>
-						<li><a href="all-categories.html">Companies Categories Page</a></li>
-						<li><a href="category-companies-listings-filterstop.html">Companies Listing Page</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="login.html">Login</a></li>
-						<li><a href="register.html">Register</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="help.html">Help Section</a></li>
-						<li><a href="faq.html">Faq Section</a></li>
-						<li><a href="contacts.html">Contacts</a></li>
-						<li>
-							<span><a href="#0">Icon Packs</a></span>
-							<ul>
-								<li><a href="icon-pack-1.html">Icon pack 1</a></li>
-								<li><a href="icon-pack-2.html">Icon pack 2</a></li>
-								<li><a href="icon-pack-3.html">Icon pack 3</a></li>
-								<li><a href="icon-pack-4.html">Icon pack 4</a></li>
-							</ul>
-						</li>
-						<li><a href="404.html">404 page</a></li>
-					</ul>
-				</li>
 				<li class="d-block d-sm-none"><span><a href="{{ route('create-review') }}" class="btn_top">Оставить отзыв</a></span></li>
 			</ul>
 		</nav>
@@ -130,5 +88,10 @@
     <script src="{{ asset('thema/assets/validate.js') }}"></script>
 	<link href="{{ asset('js/toastr/toastr.css') }}" rel="stylesheet">
 	<script src="{{ asset('js/toastr/toastr.js') }}"></script>
+
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 </body>
 </html>
