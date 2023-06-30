@@ -8,12 +8,11 @@
 				<div class="container">
 					<h3>Каждый отзыв - это незабываемый опыт!</h3>
 					<p>Проверяйте рейтинги, читайте отзывы</p>
-					<div class="row justify-content-center">
+					<!--div class="row justify-content-center">
 						<div class="col-lg-9">
 						<div action="grid-listings-filterstop.html">
 							<div class="row no-gutters custom-search-input-2">
 								<div class="col-lg-7">
-
 									<div class="form-group">
 										<input class="form-control" type="text" placeholder="Что вы ищите..." id="input-search">
 										<i class="icon_search"></i>
@@ -28,10 +27,9 @@
 									<input type="submit" value="Поиск" id='button-search'>
 								</div>
 							</div>
-							<!-- /row -->
 						</div>
 						</div>
-					</div>
+					</div-->
 				</div>
 			</div>
 		</section>
