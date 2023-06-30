@@ -17,6 +17,7 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{ asset('img/apple-touch-icon-72x72-precomposed.png') }}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{ asset('img/apple-touch-icon-114x114-precomposed.png') }}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{ asset('img/apple-touch-icon-144x144-precomposed.png') }}">
+	<script src="https://www.google.com/recaptcha/enterprise.js?render=6Ld4tOImAAAAAFpFKaJyLBdCm8GPtG01SfS8pz0C"></script>
 
     <!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
@@ -93,5 +94,18 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+
+	<script>
+		function onClick(e) {
+			e.preventDefault();
+			grecaptcha.enterprise.ready(async () => {
+			const token = await grecaptcha.enterprise.execute('6Ld4tOImAAAAAFpFKaJyLBdCm8GPtG01SfS8pz0C', {action: 'LOGIN'});
+			// IMPORTANT: The 'token' that results from execute is an encrypted response sent by
+			// reCAPTCHA Enterprise to the end user's browser.
+			// This token must be validated by creating an assessment.
+			// See https://cloud.google.com/recaptcha-enterprise/docs/create-assessment
+			});
+		}
+	</script>
 </body>
 </html>
