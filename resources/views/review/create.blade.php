@@ -72,7 +72,7 @@
 							</div>
 
 							<!-- добавление элемента div -->
-							<div class="g-recaptcha" data-sitekey="6Ld4tOImAAAAAFpFKaJyLBdCm8GPtG01SfS8pz0C"></div>
+							<div class="g-recaptcha" data-sitekey="6LcqSuMmAAAAAGaZbRZ3fhsQw9N6P--26w0ke-Jn"></div>
 							<!-- элемент для вывода ошибок -->
 							<div class="text-danger" id="recaptchaError"></div>
 							<!-- js-скрипт гугл капчи -->
