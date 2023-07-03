@@ -2,38 +2,21 @@
 
 @section('content')
 
+	<br><br>
+	@include('review.grid')
 	<main>
-		<section class="hero_single version_1">
+		
+		<!--section class="hero_single version_1">
 			<div class="wrapper">
 				<div class="container">
 					<h3>Каждый отзыв - это незабываемый опыт!</h3>
 					<p>Проверяйте рейтинги, читайте отзывы</p>
-					<!--div class="row justify-content-center">
-						<div class="col-lg-9">
-						<div action="grid-listings-filterstop.html">
-							<div class="row no-gutters custom-search-input-2">
-								<div class="col-lg-7">
-									<div class="form-group">
-										<input class="form-control" type="text" placeholder="Что вы ищите..." id="input-search">
-										<i class="icon_search"></i>
-									</div>
-								</div>
-								<div class="col-lg-3">
-									<select class="wide">
-										<option>Директ</option>	
-									</select>
-								</div>
-								<div class="col-lg-2">
-									<input type="submit" value="Поиск" id='button-search'>
-								</div>
-							</div>
-						</div>
-						</div>
-					</div-->
+					
 				</div>
 			</div>
-		</section>
+		</section-->
 
+		<br><br>
 		<div class="bg_color_1">
 		<div class="container margin_60">
 			<div class="main_title_3">
@@ -74,7 +57,7 @@
 		</div>
 		<!-- /bg_color_1 -->
 		
-		<div class="call_section_3">
+		<!--div class="call_section_3">
 			<div class="wrapper">
 				<div class="container clearfix">
 					<div class="col-lg-5 col-md-7 float-right">
@@ -83,13 +66,14 @@
 						<p><a class="btn_1 add_top_10 wow bounceIn" href="pricing.html" data-wow-delay="0.5s">Join Vanno Now!</a></p>
 					</div>
 				</div>
-				<!-- /container -->
 			</div>
-		</div>
+		</div-->
 		<!-- /call_section -->
-		
+
 	</main>
 	<!-- /main -->
+
+	
 
 
 	</div>
@@ -101,8 +85,6 @@
 
 <script>
 	function searchRequest() {
-
-
 
 		$.ajax({
             url: '/review/create-new-review',

@@ -51,7 +51,7 @@
 		</div>
 		<ul id="top_menu">
 			<li><a href="{{ route('create-review') }}" class="btn_top">Оставить отзыв</a></li>
-			<li><a href="{{ backpack_url('dashboard') }}"  class="login" title="Sign In">Sign In</a></li>
+			<!--li><a href="{{ backpack_url('dashboard') }}"  class="login" title="Sign In">Sign In</a></li-->
 		</ul>
 		<!-- /top_menu -->
 		<a href="#menu" class="btn_mobile">

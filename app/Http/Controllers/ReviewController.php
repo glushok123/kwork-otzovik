@@ -12,6 +12,8 @@ use Illuminate\Http\RedirectResponse;
 
 class ReviewController extends Controller
 {
+    public $countReviewGrid = 2;
+
     /**
      * Display a listing of the resource.
      *
@@ -41,6 +43,11 @@ class ReviewController extends Controller
         ]);
     }
     
+    public function paginateGrid(Request $request)
+    {
+        //$reviews = Review::where('verify', 1)->orderBy('created_at', 'DESC')->get()
+    }
+
     public function showReviews(int $site)
     {
         if (!empty($site) && !empty(Site::whereId($site)->exists())) {
