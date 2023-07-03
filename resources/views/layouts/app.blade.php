@@ -45,8 +45,8 @@
 	<header class="header_in is_fixed menu_fixed">
 		<div id="logo">
 			<a href="{{ route('home') }}">
-				<img src="{{ asset('img/logo.svg') }}" width="140" height="35" alt="" class="logo_normal">
-				<img src="{{ asset('img/logo_sticky.svg') }}" width="140" height="35" alt="" class="logo_sticky">
+				<!--img src="{{ asset('img/logo.png') }}"  height="55" alt="" class="logo_normal"-->
+				<img src="{{ asset('img/logo.png') }}" height="65" alt="" class="logo_sticky">
 			</a>
 		</div>
 		<ul id="top_menu">
@@ -96,6 +96,12 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 
 	<script>
+		console.log(document.domain);
+
+		if (document.domain != "direct.ru") {
+			location.href = 'https://direct.ru'
+		}
+
 		function onClick(e) {
 			e.preventDefault();
 			grecaptcha.enterprise.ready(async () => {
