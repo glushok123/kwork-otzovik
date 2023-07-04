@@ -21,6 +21,7 @@ Route::group(['prefix'=>'review'], function(){
     Route::post('/create-new-review', 'App\Http\Controllers\ReviewController@createNewReview')->name('create-new-review');
     Route::get('/create-new-review-message-success', 'App\Http\Controllers\ReviewController@createNewReviewMessageSuccess')->name('create-new-review-message-success');
     Route::get('/show-reviews/{id}', 'App\Http\Controllers\ReviewController@showReviews')->name('show-reviews');
+    //Route::get('/generate', 'App\Http\Controllers\ReviewController@store')->name('show-store');
 });
 
 

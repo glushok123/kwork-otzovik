@@ -74,6 +74,7 @@ class ReviewController extends Controller
             }
         }
 
+        $reviews = Review::where('verify', 1)->where('site_id', $site->id)->orderBy('created_at', 'DESC')->paginate(12);
         $starMedium = round($starSum/$countStart, 2);
 
         return view('review.show', [
@@ -81,6 +82,7 @@ class ReviewController extends Controller
             'star' => $star,
             'countStart' => $countStart,
             'starMedium' => $starMedium,
+            'reviews' => $reviews,
         ]);
     }
 
@@ -142,59 +144,45 @@ class ReviewController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreReviewRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreReviewRequest $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Review  $review
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Review $review)
+    public function store()
     {
-        //
-    }
+        ini_set('max_execution_time', '900');
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Review  $review
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Review $review)
-    {
-        //
-    }
+        foreach($this->array as $item) {
+            $comment = $item[1] . ' ' . $item[2];
+            $name = $item[0];
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateReviewRequest  $request
-     * @param  \App\Models\Review  $review
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateReviewRequest $request, Review $review)
-    {
-        //
-    }
+            $star = 1;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Review  $review
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Review $review)
-    {
-        //
+            if (!empty($item[3]) && $item[3] == 'width: 20%;') {
+                $star = 1;
+            }
+
+            if (!empty($item[3]) && $item[3] == 'width: 40%;') {
+                $star = 2;
+            }
+
+            if (!empty($item[3]) && $item[3] == 'width: 60%;') {
+                $star = 3;
+            }
+
+            if (!empty($item[3]) && $item[3] == 'width: 80%;') {
+                $star = 4;
+            }
+
+            if (!empty($item[3]) && $item[3] == 'width: 100%;') {
+                $star = 5;
+            }
+
+            $review = new Review();
+            $review->name = $name;
+            $review->rating = $star;
+            $review->rewiew = $comment;
+            $review->site_id = 1;
+            $review->source = 'https://otzyvmarketing.ru/direct-yandex/';
+
+            $review->save();
+        }
     }
 }

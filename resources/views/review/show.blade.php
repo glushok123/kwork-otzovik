@@ -27,7 +27,7 @@
 										<div class="progress-bar" role="progressbar" style="width: {{ $star['5']*100/$countStart }}%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
-								<div class="col-lg-3 col-3 text-right"><strong>оценка "5"</strong></div>
+								<div class=" text-right"><strong>оценка "5" ({{ $star['5'] }})</strong></div>
 							</div>
 							<!-- /row -->
 							<div class="row">
@@ -36,7 +36,7 @@
 										<div class="progress-bar" role="progressbar" style="width: {{ $star['4']*100/$countStart }}%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
-								<div class="col-lg-3 col-3 text-right"><strong>оценка "4"</strong></div>
+								<div class=" text-right"><strong>оценка "4" ({{ $star['4'] }})</strong></div>
 							</div>
 							<!-- /row -->
 							<div class="row">
@@ -45,7 +45,7 @@
 										<div class="progress-bar" role="progressbar" style="width: {{ $star['3']*100/$countStart }}%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
-								<div class="col-lg-3 col-3 text-right"><strong>оценка "3"</strong></div>
+								<div class=" text-right"><strong>оценка "3" ({{ $star['3'] }})</strong></div>
 							</div>
 							<!-- /row -->
 							<div class="row">
@@ -54,16 +54,16 @@
 										<div class="progress-bar" role="progressbar" style="width: {{ $star['2']*100/$countStart }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
-								<div class="col-lg-3 col-3 text-right"><strong>оценка "2"</strong></div>
+								<div class=" text-right"><strong>оценка "2" ({{ $star['2'] }})</strong></div>
 							</div>
 							<!-- /row -->
 							<div class="row">
 								<div class="col-lg-9 col-9">
 									<div class="progress last">
-										<div class="progress-bar" role="progressbar" style="width: {{ $star['1']*100/$countStart }}" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+										<div class="progress-bar" role="progressbar" style="width: {{ $star['1']*100/$countStart }}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
-								<div class="col-lg-3 col-3 text-right"><strong>оценка "1"</strong></div>
+								<div class=" text-right"><strong>оценка "1" ({{ $star['1'] }})</strong></div>
 							</div>
 							<!-- /row -->
 						</div>
@@ -78,14 +78,14 @@
 			<div class="row">
 				<div class="col-lg-8">
 
-					@foreach ($site->reviews as $review)
+					@foreach ($reviews as $review)
 					<div class="review_card">
 						<div class="row">
 							<div class="col-md-2 user_info">
 								<figure><img src="{{ asset('img/avatar1.jpg') }}" alt=""></figure>
 								<h5>{{ $review->name }}</h5>
 							</div>
-							<div class="col-md-10 review_content">
+							<div class="col-md-10 review_content" style="padding: 10px;">
 								<div class="clearfix add_bottom_15">
 									<span class="rating">
 										<i class="icon_star @if ($review->rating < 1) empty @endif"></i>
@@ -99,11 +99,13 @@
 								</div>
 								<p>{{ $review->rewiew }}</p>
 								<ul>
-									<li><a href="#0"><i class="icon_like_alt"></i><span></span></a></li>
-									<li><a href="#0"><i class="icon_dislike_alt"></i><span></span></a></li>
-									<li><a href="{{ $review->source }}">Источник</a></li>
+									<!--li><a href="#0"><i class="icon_like_alt"></i><span></span></a></li>
+									<li><a href="#0"><i class="icon_dislike_alt"></i><span></span></a></li -->
+									<li><a href="{{ $review->source }}" class="my-5">Источник</a></li>
 								</ul>
+								
 							</div>
+							<br>
 						</div>
 						<!-- /row -->
 						<!--div class="row reply">
@@ -122,6 +124,9 @@
 					</div>
 					@endforeach
 
+					<div class="row">
+						{{ $reviews->links() }}
+					</div>
 
 
 					<!-- /review_card -->

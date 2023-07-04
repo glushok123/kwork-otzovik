@@ -112,5 +112,11 @@
 			});
 		}
 	</script>
+
+	<style>
+		.page-link{
+			text-align: center;
+		}
+	</style>
 </body>
 </html>

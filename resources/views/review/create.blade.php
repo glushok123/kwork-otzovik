@@ -206,7 +206,7 @@
 		if (!captcha.length){
 			return false;
 		}
-
+	
 		return true;
 	}
 
@@ -236,6 +236,7 @@
             success: function (data) {
 				console.log(data);
 				if (data.success == 'true') {
+					toastr.success('Добавлен');
 					location.href = '/review/create-new-review-message-success';
 				}else{
 					toastr.error(data.message);
