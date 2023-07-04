@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="VANNO - Premium directory consumer reviews and listings template by Ansonika">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>VANNO | Premium directory consumer reviews and listings template by Ansonika.</title>
+    <title>Direct.ru вся правда про рекламную сеть директ.</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
