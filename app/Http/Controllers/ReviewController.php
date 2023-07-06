@@ -48,7 +48,7 @@ class ReviewController extends Controller
         //$reviews = Review::where('verify', 1)->orderBy('created_at', 'DESC')->get()
     }
 
-    public function showReviews(int $site)
+    public function showReviews(int $site, Request $request)
     {
         if (!empty($site) && !empty(Site::whereId($site)->exists())) {
             $site = Site::whereId($site)->first();
@@ -74,7 +74,20 @@ class ReviewController extends Controller
             }
         }
 
-        $reviews = Review::where('verify', 1)->where('site_id', $site->id)->orderBy('created_at', 'DESC')->paginate(12);
+        if (!empty($request->get('filter'))) {
+            if ($request->get('filter') == 'positive') {
+                $reviews = Review::where('verify', 1)->where('site_id', $site->id)->where('rating', 5)->orWhere('rating', 4)->orderBy('created_at', 'DESC')->paginate(12);
+            }
+            if ($request->get('filter') == 'negative') {
+                $reviews = Review::where('verify', 1)->where('site_id', $site->id)->where('rating', 1)->orWhere('rating', 2)->orderBy('created_at', 'DESC')->paginate(12);
+            }
+            if ($request->get('filter') == 'all') {
+                $reviews = Review::where('verify', 1)->where('site_id', $site->id)->orderBy('created_at', 'DESC')->paginate(12);
+            }
+        } else{
+            $reviews = Review::where('verify', 1)->where('site_id', $site->id)->orderBy('created_at', 'DESC')->paginate(12);
+        }
+
         $starMedium = round($starSum/$countStart, 2);
 
         return view('review.show', [
@@ -83,6 +96,7 @@ class ReviewController extends Controller
             'countStart' => $countStart,
             'starMedium' => $starMedium,
             'reviews' => $reviews,
+            'request' => $request,
         ]);
     }
 

@@ -2,6 +2,7 @@
 
 @section('content')
 	<main>
+	
 		<div class="reviews_summary">
 			<div class="wrapper">
 				<div class="container">
@@ -27,7 +28,7 @@
 										<div class="progress-bar" role="progressbar" style="width: {{ $star['5']*100/$countStart }}%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
-								<div class=" text-right"><strong>оценка "5" ({{ $star['5'] }})</strong></div>
+								<div class=" text-right"><strong> "5" ({{ $star['5'] }})</strong></div>
 							</div>
 							<!-- /row -->
 							<div class="row">
@@ -36,7 +37,7 @@
 										<div class="progress-bar" role="progressbar" style="width: {{ $star['4']*100/$countStart }}%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
-								<div class=" text-right"><strong>оценка "4" ({{ $star['4'] }})</strong></div>
+								<div class=" text-right"><strong> "4" ({{ $star['4'] }})</strong></div>
 							</div>
 							<!-- /row -->
 							<div class="row">
@@ -45,7 +46,7 @@
 										<div class="progress-bar" role="progressbar" style="width: {{ $star['3']*100/$countStart }}%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
-								<div class=" text-right"><strong>оценка "3" ({{ $star['3'] }})</strong></div>
+								<div class=" text-right"><strong> "3" ({{ $star['3'] }})</strong></div>
 							</div>
 							<!-- /row -->
 							<div class="row">
@@ -54,7 +55,7 @@
 										<div class="progress-bar" role="progressbar" style="width: {{ $star['2']*100/$countStart }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
-								<div class=" text-right"><strong>оценка "2" ({{ $star['2'] }})</strong></div>
+								<div class=" text-right"><strong> "2" ({{ $star['2'] }})</strong></div>
 							</div>
 							<!-- /row -->
 							<div class="row">
@@ -63,7 +64,7 @@
 										<div class="progress-bar" role="progressbar" style="width: {{ $star['1']*100/$countStart }}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
-								<div class=" text-right"><strong>оценка "1" ({{ $star['1'] }})</strong></div>
+								<div class=" text-right"><strong> "1" ({{ $star['1'] }})</strong></div>
 							</div>
 							<!-- /row -->
 						</div>
@@ -74,6 +75,41 @@
 		</div>
 		<!-- /reviews_summary -->
 		
+		<div class="filters_listing ">
+			<div class="container">
+				<ul class="clearfix">
+					<li>
+						<div class="switch-field">
+							<input type="radio" id="all" name="listing_filter" value="all"
+
+							@if (empty($request->get('filter')) || !empty($request->get('filter')) && $request->get('filter') == 'all')
+								checked 
+							@endif
+							
+							data-filter="*" class="selected">
+							<label for="all">Все</label>
+							<input type="radio" id="latest" name="listing_filter" value="positive" data-filter=".latest"
+
+							@if (!empty($request->get('filter')) && $request->get('filter') == 'positive')
+								checked 
+							@endif
+							>
+							<label for="latest">Положительные</label>
+							<input type="radio" id="oldest" name="listing_filter" value="negative" data-filter=".oldest"
+
+							@if (!empty($request->get('filter')) && $request->get('filter') == 'negative')
+								checked 
+							@endif
+							>
+							<label for="oldest">Отрицательные</label>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /filters -->
+
 		<div class="container margin_60_35">
 			<div class="row">
 				<div class="col-lg-8">
@@ -95,13 +131,13 @@
 										<i class="icon_star @if ($review->rating < 5) empty @endif"></i>
 										<em>{{ $review->rating }}/5.00</em>
 									</span>
-									<em>{{ $review->created_at }}</em>
+									<!--em>{{ $review->created_at }}</em-->
 								</div>
 								<p>{{ $review->rewiew }}</p>
 								<ul>
 									<!--li><a href="#0"><i class="icon_like_alt"></i><span></span></a></li>
 									<li><a href="#0"><i class="icon_dislike_alt"></i><span></span></a></li -->
-									<li><a href="{{ $review->source }}" class="my-5">Источник</a></li>
+									<li><a href="{{ $review->source }}" class="my-5" target="_blank">Источник</a></li>
 								</ul>
 								
 							</div>
@@ -275,9 +311,16 @@
         });
 	}
 
-	$(document).on('click', '#createButtonReview', function () {
-        createReview()
+	function setFilter() {
+		var searchParams = new URLSearchParams(window.location.search);
+		searchParams.set("filter", $('input[name="listing_filter"]:checked').val());
+		window.location.search = searchParams.toString();
+		}
+
+	$(document).on('change', 'input[name=listing_filter]', function () {
+        setFilter()
     }); // Запрос на добавление новой картины
+
 </script>
 @endsection
 

@@ -28,7 +28,7 @@
 		navbar: {
 			title: 'MENU'
 		},
-		navbars: [{position:'bottom',content: ['<a href="#0">© 2018 Vanno</a>']}]}, 
+		navbars: [{position:'bottom',content: ['<a href="#0"></a>']}]}, 
 		{
 		// configuration
 		clone: true,

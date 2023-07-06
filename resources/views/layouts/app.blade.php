@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="VANNO - Premium directory consumer reviews and listings template by Ansonika">
+    <meta name="description" content="Direct.ru вся правда про рекламную сеть директ.">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Direct.ru вся правда про рекламную сеть директ.</title>
 
@@ -98,7 +98,7 @@
 	<script>
 
 		if (document.domain != "direct.ru") {
-			location.href = 'https://direct.ru'
+			//location.href = 'https://direct.ru'
 		}
 
 		function onClick(e) {
