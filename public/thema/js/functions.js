@@ -26,7 +26,7 @@
 			enhance: true
 		},
 		navbar: {
-			title: 'MENU'
+			title: 'Меню'
 		},
 		navbars: [{position:'bottom',content: ['<a href="#0"></a>']}]}, 
 		{

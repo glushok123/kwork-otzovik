@@ -55,8 +55,9 @@
 
 			<!--li><a href="{{ backpack_url('dashboard') }}"  class="login" title="Sign In">Sign In</a></li-->
 		</ul>
+
 		<!-- /top_menu -->
-		<a href="#menu" class="btn_mobile">
+		<a href="#menu" class="btn_mobile ">
 			<div class="hamburger hamburger--spin" id="hamburger">
 				<div class="hamburger-box">
 					<div class="hamburger-inner"></div>
@@ -103,7 +104,7 @@
 	<script>
 
 		if (document.domain != "direct.ru") {
-			location.href = 'https://direct.ru'
+			//location.href = 'https://direct.ru'
 		}
 
 		function onClick(e) {
@@ -122,6 +123,17 @@
 		.page-link{
 			text-align: center;
 		}
+		@media only screen and (max-width: 600px) {
+			.hamburger{
+				margin:10px;
+				margin-left: 90%;
+			}
+			.logo_sticky{
+				margin-top: 15px !important;
+				height: 40px !important;
+			}
+		}
+
 	</style>
 </body>
 </html>
