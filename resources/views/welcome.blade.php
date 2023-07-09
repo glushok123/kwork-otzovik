@@ -18,6 +18,7 @@
 
 		<br><br>
 		<div class="bg_color_1">
+		
 		<div class="container margin_60">
 			<div class="main_title_3">
 				<h2>Последние отзывы</h2>
@@ -43,7 +44,7 @@
 							<hr>
 							<p>{{ $review->rewiew }}</p>
 							<ul class="clearfix">
-								<li><small>{{ $review->created_at }}</small></li>
+								<!--li><small>{{ $review->created_at }}</small></li-->
 								<li><a href="{{ route('show-reviews', ['id' => $review->site_id ]) }}" class="btn_1 small">Читать отзывы</a></li>
 							</ul>
 						</div>
@@ -53,9 +54,43 @@
 			</div>
 			<!-- /carousel -->
 		</div>
+		
+
 		<!-- /container -->
 		</div>
 		<!-- /bg_color_1 -->
+
+		<div class="container margin_60">
+			<div class="main_title_3">
+				<h2>Последние Статьи</h2>
+			</div>
+			
+			<div id="carousel" class="owl-carousel owl-theme">
+				@foreach ($articles as $article)
+					<div class="item">
+						<div class="review_listing">
+							<div class="clearfix">
+								<figure>
+									<img src="{{ asset('img/avatar1.jpg') }}" alt="">
+								</figure>
+							</div>
+							<h3><strong>{{ $article->name }}</strong></h3>
+
+							<hr>
+							<h3>{{ $article->title }}</h3>
+							<hr>
+
+							<ul class="clearfix">
+								<li><small>{{ $article->created_at }}</small></li>
+								<li><a href="{{ route('article-show', ['id' => $article->id ]) }}" class="btn_1 small">Читать</a></li>
+							</ul>
+						</div>
+					</div>
+				@endforeach
+
+			</div>
+			<!-- /carousel -->
+		</div>
 		
 		<!--div class="call_section_3">
 			<div class="wrapper">

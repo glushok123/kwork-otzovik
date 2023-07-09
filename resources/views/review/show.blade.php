@@ -182,8 +182,8 @@
 				<div class="col-lg-4">
 					<div class="box_general company_info">
 						<h3>{{ $site->name }}</h3>
-						<p><strong>Website</strong><br><a href="{{ $site->url }}">{{ $site->url }}</a></p>
-						<a href="{{ route('create-review', ['id' => $site->id]) }}" class="btn_top my-3">Добавить отзыв</a>
+						<!--p><strong>Website</strong><br><a href="{{ $site->url }}">{{ $site->url }}</a></!--p>
+						<a href="{{ route('create-review', ['id' => $site->id]) }}" class="btn_top my-3">Добавить отзыв</a -->
 					</div>
 				</div>
 			</div>

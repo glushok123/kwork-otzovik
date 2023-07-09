@@ -4,3 +4,4 @@
 
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('review') }}"><i class="nav-icon la la-question"></i> Отзывы</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('site') }}"><i class="nav-icon la la-question"></i> Сайты</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('article') }}"><i class="nav-icon la la-question"></i> Статьи</a></li>

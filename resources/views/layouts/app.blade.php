@@ -51,6 +51,8 @@
 		</div>
 		<ul id="top_menu">
 			<li><a href="{{ route('create-review') }}" class="btn_top">Оставить отзыв</a></li>
+			<li><a href="{{ route('article-create') }}" class="btn_top">Написать статью</a></li>
+
 			<!--li><a href="{{ backpack_url('dashboard') }}"  class="login" title="Sign In">Sign In</a></li-->
 		</ul>
 		<!-- /top_menu -->
@@ -65,7 +67,10 @@
 		<nav id="menu" class="main-menu">
 			<ul>
 				<li><span><a href="{{ route('home') }}">Главная</a></span></li>
+				<li><span><a href="{{ route('home') }}">Отзывы</a></span></li>
+				<li><span><a href="{{ route('article-home') }}">Статьи</a></span></li>
 				<li class="d-block d-sm-none"><span><a href="{{ route('create-review') }}" class="btn_top">Оставить отзыв</a></span></li>
+				<li class="d-block d-sm-none"><span><a href="{{ route('article-create') }}" class="btn_top">Написать статью</a></span></li>
 			</ul>
 		</nav>
 	</header>

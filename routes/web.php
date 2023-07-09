@@ -24,6 +24,13 @@ Route::group(['prefix'=>'review'], function(){
     //Route::get('/generate', 'App\Http\Controllers\ReviewController@store')->name('show-store');
 });
 
+Route::group(['prefix'=>'article'], function(){
+    Route::get('/show-all', 'App\Http\Controllers\ArticleController@home')->name('article-home');
+    Route::get('/show/{id}', 'App\Http\Controllers\ArticleController@show')->name('article-show');
+    Route::get('/create', 'App\Http\Controllers\ArticleController@create')->name('article-create');
+    Route::post('/save-image', 'App\Http\Controllers\ArticleController@saveImage')->name('article-save-image');
+    Route::post('/create-new-article', 'App\Http\Controllers\ArticleController@createNewArticle')->name('create-new-article');
+});
 
 Route::group(["middleware" => ["web", "admin"]], function () {
     Route::group(['prefix'=>'orders'], function(){

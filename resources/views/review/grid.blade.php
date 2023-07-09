@@ -23,7 +23,7 @@
 							<hr>
 							<p>{{ $review->rewiew }}</p>
 							<ul class="clearfix">
-								<li><small>{{ $review->created_at }}</small></li>
+								<!--li><small>{{ $review->created_at }}</small></li-->
 								<li><a href="{{ route('show-reviews', ['id' => $review->site_id ]) }}" class="btn_1 small">Читать отзывы</a></li>
 							</ul>
                         </div>
