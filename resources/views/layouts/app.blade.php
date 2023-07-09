@@ -103,7 +103,7 @@
 	<script>
 
 		if (document.domain != "direct.ru") {
-			//location.href = 'https://direct.ru'
+			location.href = 'https://direct.ru'
 		}
 
 		function onClick(e) {
